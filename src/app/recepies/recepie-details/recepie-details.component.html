@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <img src="" alt="" class="img-responsive" style="max-width: 50px;">
+        <img [src]="recepie.imagePath" alt="" class="img-responsive" style="max-width: 300px;">
     </div>
 </div>
 <div class="row">
@@ -17,12 +17,12 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <p>Recepie Name</p>
+        <p>{{recepie.name}}</p>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <p>Recepie Descriptiion</p>
+        <p>{{recepie.description}}</p>
     </div>
 </div>
 <div class="row">
