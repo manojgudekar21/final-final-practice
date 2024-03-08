@@ -27,6 +27,8 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        <p>Recepie Ingrident</p>
+        <ul *ngFor="let ingrident of recepie.ingridents">
+            <li>{{ingrident.name}} ({{ingrident.amount}})</li>
+        </ul>
     </div>
 </div>

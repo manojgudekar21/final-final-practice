@@ -6,9 +6,12 @@
 <br>
 <div class="row">
     <div class="col-md-5">
-       <app-recepie-list (selectedRecepie)="receviedRecepie($event)"></app-recepie-list>
+       <app-recepie-list ></app-recepie-list>
     </div>
     <div class="col-md-7">
-        <app-recepie-details [recepie]="selectedRecepie"></app-recepie-details>
+        <app-recepie-details *ngIf="selectedRecepie;else infotext" [recepie]="selectedRecepie"></app-recepie-details>
+        <ng-template #infotext>
+            <h4>Please Select Recepie</h4>
+        </ng-template>
     </div>
 </div>
