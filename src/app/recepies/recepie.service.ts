@@ -7,8 +7,7 @@ import { Ingrident } from '../shared/ingrident.model';
 })
 export class RecepieService {
 
-  onClickedRecepie = new EventEmitter<Recepie>();
-  
+  onChangedRecepie = new EventEmitter<Recepie[]>()
   constructor() { }
 
   private recepies:Recepie[]=[
@@ -26,6 +25,22 @@ export class RecepieService {
 
   getRecepies(){
     return this.recepies.slice()
+  }
+
+  getRecepiebyID(id:number){
+    return this.recepies[id]
+  }
+  updateRecepie(index:number,newRecepie:Recepie){
+    this.recepies[index] = newRecepie
+    this.onChangedRecepie.emit(this.recepies.slice())
+  }
+  AddRecepie(recepie:Recepie){
+    this.recepies.push(recepie)
+    this.onChangedRecepie.next(this.recepies.slice())
+  }
+  deleteRecepie(index:number){
+    this.recepies.splice(index,1)
+    this.onChangedRecepie.emit(this.recepies.slice())
   }
 
 }

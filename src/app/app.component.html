@@ -1,9 +1,10 @@
-<app-header (datasended)="onRecevieData($event)" ></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recepies *ngIf="onreceviedData === 'recepies'" ></app-recepies>
-      <app-shopping-list *ngIf="onreceviedData === 'shopping-list'"></app-shopping-list>
+      <!-- <app-recepies></app-recepies>
+      <app-shopping-list></app-shopping-list> -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

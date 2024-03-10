@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="basicform" (ngSubmit)="onSubmit()">
+            <div>
+                <button class="btn btn-success" type="submit" [disabled]="basicform.invalid">Save</button>
+                <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" formControlName="description" name="description" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="imagePath">ImageURL</label>
+                <input type="text" formControlName="imagePath" name="imagePath" class="form-control" #imagevalue>
+            </div>
+            <div>
+                <img src="" alt="" class="img-responsive">
+            </div>
+            <div class="row">
+                <div class="col-xs-12" formArrayName="ingridents">
+                    <div class="row" *ngFor="let ingridentscontrol of basicform.get('ingridents')['controls'];let i = index"
+                    [formGroupName]="i">
+                        <div class="col-xs-8">
+                            <div class="form-group">
+                                <input type="text" name="name" formControlName="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <input type="number" name="amount" formControlName="amount" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <button class="btn btn-danger" type="button" (click)="onRemoveCOntrol()">X</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <button class="btn btn-success" type="button" (click)="onAddIngrident()">Add Ingrident</button>
+        </form>
+    </div>
+</div>

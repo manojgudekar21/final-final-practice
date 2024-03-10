@@ -8,10 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'final-final-pract';
 
-  onreceviedData='recepies'
-
-  onRecevieData(data:string){
-    this.onreceviedData = data
-  }
-
 }

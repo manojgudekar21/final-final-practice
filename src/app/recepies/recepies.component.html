@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <button class="btn btn-success">Add Recepie</button>
+        <button class="btn btn-success" (click)="addRecepie()">Add Recepie</button>
     </div>
 </div>
 <br>
@@ -9,9 +9,10 @@
        <app-recepie-list ></app-recepie-list>
     </div>
     <div class="col-md-7">
-        <app-recepie-details *ngIf="selectedRecepie;else infotext" [recepie]="selectedRecepie"></app-recepie-details>
+        <!-- <app-recepie-details *ngIf="selectedRecepie;else infotext" [recepie]="selectedRecepie"></app-recepie-details>
         <ng-template #infotext>
             <h4>Please Select Recepie</h4>
-        </ng-template>
+        </ng-template> -->
+        <router-outlet></router-outlet>
     </div>
 </div>

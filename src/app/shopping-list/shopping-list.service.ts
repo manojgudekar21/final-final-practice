@@ -6,6 +6,7 @@ import { Ingrident } from '../shared/ingrident.model';
 })
 export class ShoppingListService {
 
+  onEdit = new EventEmitter<number>()
   onChangedIngrident = new EventEmitter<Ingrident[]>();
 
   constructor() { }
@@ -23,6 +24,23 @@ export class ShoppingListService {
     this.ingridents.push(ingrident)
     this.onChangedIngrident.emit(this.ingridents.slice())
   }
+
+  addedtoSHoppingList(ingrident:Ingrident[]){
+    this.ingridents.push(...ingrident)
+  }
+
+  getIngridentAccToIndex(index:number){
+    return this.ingridents[index]
+  }
+  deleteIngridentAccToIndex(index:number){
+    this.ingridents.splice(index,1)
+    this.onChangedIngrident.emit(this.ingridents.slice())
+  }
+  updateIngrident(index:number,newIngrident){
+    this.ingridents[index] = newIngrident
+    this.onChangedIngrident.next(this.ingridents.slice())
+  }
+
 
 
 }

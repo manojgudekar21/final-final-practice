@@ -7,14 +7,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() datasended = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onNavigate(data:string){
-    this.datasended.emit(data)
-  }
 
 }

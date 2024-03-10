@@ -24,5 +24,9 @@ export class ShoppingListComponent implements OnInit,OnDestroy {
   }
 
   ingridents:Ingrident[]=[]
+  
+  onClick(index:number){
+    this.slService.onEdit.emit(index)
+  }
 
 }
