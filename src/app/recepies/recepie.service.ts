@@ -1,27 +1,17 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Recepie } from './recepie.model';
 import { Ingrident } from '../shared/ingrident.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecepieService {
 
-  onChangedRecepie = new EventEmitter<Recepie[]>()
+  onChangedRecepie = new Subject<Recepie[]>()
   constructor() { }
 
-  private recepies:Recepie[]=[
-    new Recepie("Custurd","its so delicious","https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/fruit-custard-recipe.jpg",
-    [
-      new Ingrident("anar",2),
-      new Ingrident("apple",1)
-    ]),
-    new Recepie("Fruit Salad","its so delicious","https://hips.hearstapps.com/hmg-prod/images/pasta-salad-horizontal-jpg-1522265695.jpg?crop=1xw:0.8435812837432514xh;center,top&resize=1200:*",
-    [
-      new Ingrident("pinneapple",1),
-      new Ingrident("curd",1)
-    ]),
-  ] 
+  private recepies:Recepie[]=[] 
 
   getRecepies(){
     return this.recepies.slice()
@@ -32,7 +22,7 @@ export class RecepieService {
   }
   updateRecepie(index:number,newRecepie:Recepie){
     this.recepies[index] = newRecepie
-    this.onChangedRecepie.emit(this.recepies.slice())
+    this.onChangedRecepie.next(this.recepies.slice())
   }
   AddRecepie(recepie:Recepie){
     this.recepies.push(recepie)
@@ -40,7 +30,11 @@ export class RecepieService {
   }
   deleteRecepie(index:number){
     this.recepies.splice(index,1)
-    this.onChangedRecepie.emit(this.recepies.slice())
+    this.onChangedRecepie.next(this.recepies.slice())
+  }
+  recepiesFromdb(recepies:Recepie[]){
+    this.recepies = recepies
+    this.onChangedRecepie.next(this.recepies.slice())
   }
 
 }

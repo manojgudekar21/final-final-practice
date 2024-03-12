@@ -14,15 +14,17 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a style="cursor: pointer;" routerLinkActive="active" routerLink="/recepies">Recepies</a></li>
-          <li><a style="cursor: pointer;" routerLinkActive="active" routerLink="/shopping-list">Shopping-list</a></li>
+          <li routerLinkActive="active"><a style="cursor: pointer;"  routerLink="/recepies" *ngIf="isLoggedin">Recepies</a></li>
+          <li routerLinkActive="active"><a style="cursor: pointer;"  routerLink="/auth" *ngIf="!isLoggedin">Authentication</a></li>
+          <li routerLinkActive="active"><a style="cursor: pointer;"  routerLink="/shopping-list">Shopping-list</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown" appOpenMenu>
+          <li><a style="cursor: pointer;" *ngIf="isLoggedin" (click)="onLogout()">Logout</a></li>
+          <li class="dropdown" appOpenMenu >
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a>Save Data</a></li>
-                <li><a>Fetch Data</a></li>
+            <ul class="dropdown-menu" *ngIf="isLoggedin">
+                <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
+                <li><a style="cursor: pointer;" (click)="onFetchData()">Fetch Data</a></li>
             </ul>
           </li>
         </ul>
